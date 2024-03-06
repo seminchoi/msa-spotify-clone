@@ -1,8 +1,7 @@
 rootProject.name = "spotify"
 
 include(
-        "spotify-core:graphql-core",
-        "spotify-core:mongo-core"
+        "module:mongo-reactive-module"
 )
 pluginManagement {
     val kotlinVersion: String by settings

@@ -1,4 +1,4 @@
-package com.spotify.mongoreactivecore
+package com.spotify.mongoreactivemodule
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
