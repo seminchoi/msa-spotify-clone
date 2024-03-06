@@ -1,5 +1,9 @@
 rootProject.name = "spotify"
 
+include(
+        "spotify-core:graphql-core",
+        "spotify-core:mongo-core"
+)
 pluginManagement {
     val kotlinVersion: String by settings
     val springBootVersion: String by settings
