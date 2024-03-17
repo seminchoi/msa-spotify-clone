@@ -33,8 +33,12 @@ subprojects {
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.22")
+        implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
-        implementation("org.springframework.boot:spring-boot-starter-web")
+        implementation ("io.netty:netty-resolver-dns-native-macos:4.1.68.Final:osx-aarch_64")
+
+        implementation("org.springframework.boot:spring-boot-starter-webflux")
 
         testImplementation("org.springframework.boot:spring-boot-starter-test")
     }
@@ -49,4 +53,6 @@ subprojects {
     tasks.withType<Test> {
         useJUnitPlatform()
     }
+
+    tasks.register("prepareKotlinBuildScriptModel") {}
 }

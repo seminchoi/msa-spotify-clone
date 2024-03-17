@@ -1,8 +1,16 @@
 rootProject.name = "spotify"
 
-include(
-        "module:mongo-reactive-module"
-)
+// module
+include("module:reactive-mongo-module")
+
+// domain
+include("domain:music-domain")
+include("domain:admin-music-domain")
+
+// application
+include("application:admin-music-api")
+
+
 pluginManagement {
     val kotlinVersion: String by settings
     val springBootVersion: String by settings
