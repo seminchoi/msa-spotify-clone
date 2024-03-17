@@ -2,6 +2,7 @@ rootProject.name = "spotify"
 
 // module
 include("module:reactive-mongo-module")
+include("module:webflux-module")
 
 // domain
 include("domain:music-domain")
