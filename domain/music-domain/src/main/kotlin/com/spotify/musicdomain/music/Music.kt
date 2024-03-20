@@ -1,6 +1,6 @@
 package com.spotify.musicdomain.music
 
-import com.spotify.reactivemongomodule.BaseTimeDocument
+import com.spotify.reactivemongomodule.document.BaseTimeDocument
 import com.spotify.musicdomain.album.Album
 import com.spotify.musicdomain.artist.Artist
 import com.spotify.musicdomain.embeddable.EmbeddableAlbum

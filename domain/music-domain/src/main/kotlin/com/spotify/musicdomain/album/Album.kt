@@ -1,6 +1,6 @@
 package com.spotify.musicdomain.album
 
-import com.spotify.reactivemongomodule.BaseTimeDocument
+import com.spotify.reactivemongomodule.document.BaseTimeDocument
 import com.spotify.musicdomain.embeddable.EmbeddableArtist
 import org.springframework.data.annotation.PersistenceCreator
 import org.springframework.data.mongodb.core.mapping.Document

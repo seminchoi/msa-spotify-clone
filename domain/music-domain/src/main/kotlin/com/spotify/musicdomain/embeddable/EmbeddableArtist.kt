@@ -1,6 +1,6 @@
 package com.spotify.musicdomain.embeddable
 
-import com.spotify.reactivemongomodule.BaseDocument
+import com.spotify.reactivemongomodule.document.BaseDocument
 import com.spotify.musicdomain.artist.Artist
 import org.springframework.data.annotation.PersistenceCreator
 

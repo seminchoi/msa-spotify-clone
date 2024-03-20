@@ -1,6 +1,6 @@
 package com.spotify.musicdomain.artist
 
-import com.spotify.reactivemongomodule.BaseTimeDocument
+import com.spotify.reactivemongomodule.document.BaseTimeDocument
 import org.springframework.data.mongodb.core.mapping.Document
 
 @Document
