@@ -1,4 +1,4 @@
-package com.spotify.album
+package com.spotify.adminmusicdomain.album
 
 import com.spotify.musicdomain.album.Album
 import com.spotify.musicdomain.music.Music
