@@ -1,4 +1,4 @@
-package com.spotify.reactivemongomodule
+package com.spotify.reactivemongomodule.document
 
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate

@@ -1,4 +1,4 @@
-package com.spotify.reactivemongomodule
+package com.spotify.reactivemongomodule.document
 
 import org.bson.types.ObjectId
 import org.springframework.data.annotation.Id
@@ -10,8 +10,8 @@ abstract class BaseDocument(
 ) {
     @Id
     @Field(name = "_id", targetType = FieldType.OBJECT_ID)
-    var id = id
-        private set
+    val id = id
+
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
