@@ -3,13 +3,19 @@ rootProject.name = "spotify"
 // module
 include("module:reactive-mongo-module")
 include("module:webflux-module")
+include("module:graphql-module")
 
 // domain
 include("domain:music-domain")
 include("domain:admin-music-domain")
+include("domain:user-music-domain")
+include("domain:library-domain")
 
 // application
+include("application:user-music-api")
 include("application:admin-music-api")
+include("application:library-api")
+
 
 
 pluginManagement {
