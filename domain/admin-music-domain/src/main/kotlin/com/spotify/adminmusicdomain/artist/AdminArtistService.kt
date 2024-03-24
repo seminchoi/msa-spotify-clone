@@ -23,34 +23,34 @@ class AdminArtistService(
         return artistRepository.findAllById(ids)
     }
 
-    fun updateArtists(musics: Flux<Music>, artistMapMono: Mono<Map<String, Artist>>) {
-        val artistMusicsMapMono = musics.flatMap { music ->
-            Flux.fromIterable(music.artists.map { artist ->
-                Pair(artist.id, music)
-            })
-        }.collectMultimap(
-            { pair -> pair.first },
-            { pair -> pair.second }
-        )
+fun updateArtists(musics: Flux<Music>, artistMapMono: Mono<Map<String, Artist>>) {
+    val artistMusicsMapMono = musics.flatMap { music ->
+        Flux.fromIterable(music.artists.map { artist ->
+            Pair(artist.id, music)
+        })
+    }.collectMultimap(
+        { pair -> pair.first },
+        { pair -> pair.second }
+    )
 
-        val artistZip = artistMapMono.zipWith(artistMusicsMapMono)
+    val artistZip = artistMapMono.zipWith(artistMusicsMapMono)
 
-        val artists = artistZip.flatMapMany { zip ->
-            val artistMap = zip.t1
-            val artistMusicsMap = zip.t2
+    val artists = artistZip.flatMapMany { zip ->
+        val artistMap = zip.t1
+        val artistMusicsMap = zip.t2
 
-            val artistIds = Flux.fromIterable(artistMap.keys)
-            artistIds.map { artistId ->
-                val artist = artistMap.getValue(artistId)
-                val musics = artistMusicsMap.getValue(artistId)
+        val artistIds = Flux.fromIterable(artistMap.keys)
+        artistIds.map { artistId ->
+            val artist = artistMap.getValue(artistId)
+            val musics = artistMusicsMap.getValue(artistId)
 
-                artist.addMusics(musics.map { it.id })
-                artist.addAlbums(musics.flatMap { it.artists.map { it.id } })
+            artist.addMusics(musics.map { it.id })
+            artist.addAlbums(musics.flatMap { it.artists.map { it.id } })
 
-                artist
-            }
+            artist
         }
-
-        artistRepository.saveAll(artists).subscribe()
     }
+
+    artistRepository.saveAll(artists).subscribe()
+}
 }
