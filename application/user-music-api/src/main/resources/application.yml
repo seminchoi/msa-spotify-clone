@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: admin-music-api
+
+  graphql:
+    graphiql:
+      enabled: true
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb: DEBUG

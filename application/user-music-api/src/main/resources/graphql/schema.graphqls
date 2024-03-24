@@ -1,0 +1,50 @@
+type Music {
+    id: ID!
+    name: String!
+    releaseDate: DateTime
+    genre: Genre
+}
+
+input MusicInput {
+    name: String!
+    releaseDate: DateTime
+    genre: Genre
+    albumId: String!
+    artistIds: [String!]!
+}
+
+enum Genre {
+    DANCE
+    ROCK
+    BALLADE
+    JAZZ
+}
+
+type Album {
+    id: ID!
+    name: String!
+    releaseDate: DateTime!
+    musicList(musicId : ID): [Music!]!
+}
+
+input AlbumInput {
+    id: ID
+    name: String!
+    releaseDate: DateTime!
+}
+
+type Artist {
+    id: ID!
+    name: String!
+}
+
+input ArtistInput {
+    id: ID
+    name: String!
+}
+
+type Query {
+    searchMusics(searchText: String!): [Music!]
+}
+
+scalar DateTime
