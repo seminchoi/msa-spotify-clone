@@ -1,0 +1,58 @@
+type Music {
+    id: ID!
+    name: String!
+    releaseDate: DateTime
+    genre: Genre
+}
+
+input MusicInput {
+    name: String!
+    releaseDate: DateTime
+    genre: Genre
+    albumId: String!
+    artistIds: [String!]!
+}
+
+enum Genre {
+    DANCE
+    ROCK
+    BALLADE
+    JAZZ
+}
+
+type Album {
+    id: ID!
+    name: String!
+    releaseDate: DateTime!
+    musicList(musicId : ID): [Music!]!
+}
+
+input AlbumInput {
+    id: ID
+    name: String!
+    releaseDate: DateTime!
+}
+
+type Artist {
+    id: ID!
+    name: String!
+}
+
+input ArtistInput {
+    id: ID
+    name: String!
+}
+
+type Query {
+    music(id: ID!): Music!
+}
+
+type Mutation {
+    createArtist(artistInput: ArtistInput!): Artist!
+    createAlbum(albumInput: AlbumInput!): Album!
+    updateAlbum(albumInput: AlbumInput!): Album!
+    createMusics(musicInputs: [MusicInput!]!): [Music]!
+}
+
+
+scalar DateTime
