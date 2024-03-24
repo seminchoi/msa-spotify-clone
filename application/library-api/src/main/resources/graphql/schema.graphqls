@@ -1,0 +1,59 @@
+interface LibraryNode {
+    id: ID!
+    type: LibraryNodeType!
+    parentId: String
+}
+
+type LibraryLeafNode implements LibraryNode {
+    id: ID!
+    type: LibraryNodeType!
+    parentId: String
+    referenceId: String!
+}
+
+type LibraryPlaylistNode implements LibraryNode {
+    id: ID!
+    type: LibraryNodeType!
+    parentId: String
+    name: String!
+    children: [String!]
+}
+
+type LibraryFolderNode implements LibraryNode {
+    id: ID!
+    type: LibraryNodeType!
+    parentId: String
+    name: String!
+    children: [String!]
+    childPlaylistCount: Int!
+    childFolderCount: Int!
+}
+
+
+input LibraryNodeInput {
+    type: LibraryNodeType!
+    referenceId: String
+    parentId: String
+    name: String
+}
+
+enum LibraryNodeType {
+    MUSIC
+    ALBUM
+    ARTIST
+    PLAYLIST
+    FOLDER
+}
+
+
+type Mutation {
+    createLibraryNode(libraryNodeInput: LibraryNodeInput) : LibraryNode
+    moveLibraryNode(id: String, moveToParentId: String) : LibraryNode
+}
+
+type Query {
+    getChildren(id: String) : [LibraryNode!]
+    goBack(parentIdOfCurNodes:String!) : [LibraryNode!]
+}
+
+scalar DateTime
